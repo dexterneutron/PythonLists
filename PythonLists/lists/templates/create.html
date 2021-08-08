@@ -5,14 +5,18 @@
     {% bootstrap_css %}   
     {% load static %}
   </head>
-<body>  
+<body class="container">  
+  <div>
     <form method="post" enctype="multipart/form-data">
+      <h4> Task Description</h1>
         {% csrf_token %}
-        {{ form.as_p }}
-          <label for="description" class="txt_negrita"></label>
-        <button type="submit" class="btn btn-primary">Aceptar</button>
-        <a href="./" type="submit" class="btn btn-primary">Cancelar</a>
+        {{ form.description|add_class:"form-control"|attr:"rows:3"  }}
+        <div class="btn-group mt-2">
+        <button type="submit" class="btn btn-outline-primary">Create</button>
+        <a href="./" type="submit" class="btn btn-outline-danger">Cancel</a>
+        </div>
     </form>
+  </div>
     {% bootstrap_javascript jquery='full' %} 
 </body>
 </html>
