@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lists',
+    'clear_cache',
+    'bootstrap4',
+    'widget_tweaks',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

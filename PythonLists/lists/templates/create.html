@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head> 
+    {% load bootstrap4 %}   
+    {% load widget_tweaks %}
+    {% bootstrap_css %}   
+    {% load static %}
+  </head>
+<body>  
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+          <label for="description" class="txt_negrita"></label>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <a href="./" type="submit" class="btn btn-primary">Cancelar</a>
+    </form>
+    {% bootstrap_javascript jquery='full' %} 
+</body>
+</html>
