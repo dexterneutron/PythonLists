@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head> 
+    {% load bootstrap4 %}   
+    {% bootstrap_css %}   
+    {% load static %}
+  </head>
+<body>
+
+<div class="container">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Welcome to PythonLists</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="./">Today's tasks <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/shopping">Shopping List</a>
+        </li>
+      </ul>
+    </div>  </nav>
+{% if messages %}
+  <ul class="messages list-group mb-3">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }} list-group-item list-group-item-primary"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+<table class="table table-hover">
+        <th><h4>Today's Tasks</h4></th>
+    <tbody>
+    <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
+    {% for task in object_list %}
+      <tr>
+        <td>{{task.description}}</td>
+        <td>
+          <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->                        
+          <form method="POST" action="delete/{{task.id}}">
+            {% csrf_token %}
+              <div class="btn-group">
+              <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+              <a href="details/{{task.id}}" title="Ver" type="button" class="btn btn-outline-primary">Details</a>
+              <a href="edit/{{task.id}}" title="Editar" type="button" class="btn btn-outline-secondary">Edit </a>
+              <button class="btn btn-outline-danger" onclick="return deleteTask();" type="submit">
+                Delete
+              </button>
+            </div>
+          </form>
+   
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div align="left" class="btn_crear mb-3">
+    <a href="create" type="button" class="btn btn-outline-primary">New Task</a>
+  </div>
+</div>  
+  {% bootstrap_javascript jquery='full' %} 
+    <script type="text/javascript">
+        function deleteTask() {
+          var x = confirm("Delete Task?");
+          if (x)
+            return true;
+          else
+            return false;
+        }
+      </script>
+   </body>
+</html>

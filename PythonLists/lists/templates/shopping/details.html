@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head> 
+    {% load bootstrap4 %}   
+    {% load widget_tweaks %}
+    {% bootstrap_css %}   
+    {% load static %}
+  </head>
+<body class="container">  
+    <div class="container">
+    <h4>Details</h4>
+    <p><span>Name:</span> <br> {{object.Name}}</p>    
+    <p><span>Description:</span> <br> {{object.description}}</p>     
+    <p><span>Quantity:</span> <br> {{object.quantity}}</p>     
+ 
+    <a href="../" type="submit" class="btn btn-outline-danger">Back</a>
+   </div>
+    {% bootstrap_javascript jquery='full' %} 
+</body>
+</html>
