@@ -32,16 +32,13 @@
 <table class="table table-hover">
         <th><h4>Today's Shopping List</h4></th>
     <tbody>
-    <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
     {% for shoppingitem in object_list %}
       <tr>
         <td>{{shoppingitem.Name}}</td>
         <td>
-          <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->                        
           <form method="POST" action="delete/{{shoppingitem.id}}">
             {% csrf_token %}
-              <div class="btn-group">
-              <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+              <div class="btn-group float-right">
               <a href="details/{{shoppingitem.id}}" title="Ver" type="button" class="btn btn-outline-primary">Details</a>
               <a href="edit/{{shoppingitem.id}}" title="Editar" type="button" class="btn btn-outline-secondary">Edit </a>
               <button class="btn btn-outline-danger" onclick="return deleteItem();" type="submit">

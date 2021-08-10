@@ -22,24 +22,24 @@ from lists.views import UpdateTask, TasksList, TaskDetail, CreateTask, DeleteTas
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('lists/', TasksList.as_view(template_name = "tasks/index.html"), name='read'),
+    path('lists/', TasksList.as_view(template_name = "tasks/index.html"), name='readTasks'),
  
-    path('lists/details/<int:pk>', TaskDetail.as_view(template_name = "tasks/details.html"), name='details'),
+    path('lists/details/<int:pk>', TaskDetail.as_view(template_name = "tasks/details.html"), name='detailsTasks'),
  
-    path('lists/create', CreateTask.as_view(template_name = "tasks/create.html"), name='create'),
+    path('lists/create', CreateTask.as_view(template_name = "tasks/create.html"), name='createTasks'),
  
-    path('lists/edit/<int:pk>', UpdateTask.as_view(template_name = "tasks/update.html"), name='edit'), 
+    path('lists/edit/<int:pk>', UpdateTask.as_view(template_name = "tasks/update.html"), name='editTasks'), 
  
-    path('lists/delete/<int:pk>', DeleteTask.as_view(), name='delete'),    
+    path('lists/delete/<int:pk>', DeleteTask.as_view(), name='deleteTasks'),    
 
-    path('shopping/', ShoppingList.as_view(template_name = "shopping/index.html"), name='read'),
+    path('shopping/', ShoppingList.as_view(template_name = "shopping/index.html"), name='readShopping'),
  
-    path('shopping/details/<int:pk>', ShoppingItemDetail.as_view(template_name = "shopping/details.html"), name='details'),
+    path('shopping/details/<int:pk>', ShoppingItemDetail.as_view(template_name = "shopping/details.html"), name='detailsShopping'),
  
-    path('shopping/create', CreateShoppingItem.as_view(template_name = "shopping/create.html"), name='create'),
+    path('shopping/create', CreateShoppingItem.as_view(template_name = "shopping/create.html"), name='createShopping'),
  
-    path('shopping/edit/<int:pk>', UpdateShoppingItem.as_view(template_name = "shopping/update.html"), name='edit'), 
+    path('shopping/edit/<int:pk>', UpdateShoppingItem.as_view(template_name = "shopping/update.html"), name='editShopping'), 
  
-    path('shopping/delete/<int:pk>', DeleteShoppingItem.as_view(), name='delete'),   
+    path('shopping/delete/<int:pk>', DeleteShoppingItem.as_view(), name='deleteShopping'),   
 ]
 
