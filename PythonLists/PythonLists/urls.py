@@ -16,11 +16,15 @@ Including another URLconf
 from lists.views import TasksList
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import RedirectView
+from django.urls import re_path
 
 from lists.views import UpdateTask, TasksList, TaskDetail, CreateTask, DeleteTask,ShoppingList,CreateShoppingItem,UpdateShoppingItem,DeleteShoppingItem,ShoppingItemDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('',  RedirectView.as_view(url='https://pythonlists.herokuapp.com/lists/')),
 
     path('lists/', TasksList.as_view(template_name = "tasks/index.html"), name='readTasks'),
  
